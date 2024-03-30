@@ -32,7 +32,7 @@ for(int i = 0; i < A.Length; i++)
         "    " + (A[i] | B[i] | C[i] | D[i]) +
         "            " + (A[i] & B[i] & C[i] & D[i]) +
         "                " + ((C[i] | D[i]) & (A[i] & C[i])) +
-        "                " + (A[i] & B[i] & C[i] & D[i]) +
+        "                " + (A[i] | B[i] | C[i] | D[i]) +
         "                " + ((A[i] | B[i]) | (C[i] & D[i]))
         );
 
