@@ -1,4 +1,4 @@
-﻿Console.WriteLine("CONVERSOR DE UM BINÁRIO DE 4 BITS\n");
+Console.WriteLine("CONVERSOR DE UM BINÁRIO DE 4 BITS\n");
 List<int> Bin = new List<int>();
 
 for (int i = 0; i < 4; i++)
@@ -17,8 +17,14 @@ Console.WriteLine("Convertido para Decimal: " + Decimal);
 Console.WriteLine("Convertido para Octal: " + Octal);
 Console.WriteLine("Convertido para Hexa: " + Hexa);
 
+Console.WriteLine("\n A   B   C   D   AND   OR");
+Console.WriteLine($" {Bin[0]} | {Bin[1]} | {Bin[2]} | {Bin[3]}" +
+    "    " + (Bin[0] & Bin[1] & Bin[2] & Bin[3]) +
+    "    " + (Bin[0] | Bin[1] | Bin[2] | Bin[3]));
+
+
 Console.WriteLine("\nTABELA VERDADE");
-Console.WriteLine(" A   B   C   D   AND   OR    S = (A.B.C.D)   S = (C+D).(A.C)   S = (A+B+C+D)   S = (A+B)+(C.D)");
+Console.WriteLine(" A   B   C   D     S = (A.B.C.D)   S = (C+D).(A.C)   S = (A+B+C+D)   S = (A+B)+(C.D)");
 
 int[] A = [0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1];
 int[] B = [0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 1, 1, 1, 1];
@@ -28,8 +34,6 @@ int[] D = [0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1];
 for(int i = 0; i < A.Length; i++)
 {
     Console.WriteLine($" {A[i]} | {B[i]} | {C[i]} | {D[i]}" +
-        "    " + (A[i] & B[i] & C[i] & D[i]) + 
-        "    " + (A[i] | B[i] | C[i] | D[i]) +
         "            " + (A[i] & B[i] & C[i] & D[i]) +
         "                " + ((C[i] | D[i]) & (A[i] & C[i])) +
         "                " + (A[i] | B[i] | C[i] | D[i]) +
@@ -37,6 +41,3 @@ for(int i = 0; i < A.Length; i++)
         );
 
 }
-
-
-
