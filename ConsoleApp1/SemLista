@@ -1,0 +1,47 @@
+using System;
+
+namespace ConsoleApp2
+{
+    internal class Program
+    {
+        static void Main()
+        {
+            Console.WriteLine("CONVERSOR DE UM BINÁRIO DE 4 BITS\n");
+            int[] bits = new int[4];
+
+            // Recebendo entrada do usuário para os bits
+            for (int i = 0; i < 4; i++)
+            {
+                Console.Write($"Informe o {i + 1}º bit: ");
+                bits[i] = int.Parse(Console.ReadLine());
+            }
+
+            // Convertendo para decimal, octal e hexadecimal
+            string binario = string.Join("", bits);
+            int decimalValue = Convert.ToInt32(binario, 2);
+            string octal = Convert.ToString(decimalValue, 8);
+            string hexadecimal = Convert.ToString(decimalValue, 16).ToUpper();
+
+            // Exibindo os resultados
+            Console.WriteLine("\nBinário informado: " + binario);
+            Console.WriteLine("Convertido para Decimal: " + decimalValue);
+            Console.WriteLine("Convertido para Octal: " + octal);
+            Console.WriteLine("Convertido para Hexa: " + hexadecimal);
+
+            // Exibindo a tabela verdade
+            Console.WriteLine("\nTABELA VERDADE");
+            Console.WriteLine(" A   B   C   D     S = (A.B.C.D)   S = (C+D).(A.C)   S = (A+B+C+D)   S = (A+B)+(C.D)");
+
+            for (int i = 0; i < 16; i++)
+            {
+                int A = (i >> 3) & 1; // Bit A
+                int B = (i >> 2) & 1; // Bit B
+                int C = (i >> 1) & 1; // Bit C
+                int D = i & 1;        // Bit D
+
+                Console.WriteLine($" {A} | {B} | {C} | {D}" +
+                    $"            {A & B & C & D}                {(C | D) & (A & C)}                {A | B | C | D}                {(A | B) | (C & D)}");
+            }
+        }
+    }
+}
